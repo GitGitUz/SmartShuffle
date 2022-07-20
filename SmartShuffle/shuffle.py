@@ -4,7 +4,7 @@ import itertools
 #groups songs in a playlist by their artist
 def groupPlaylistSongs(playlist):
     grouped_playlist = []
-    key_func = lambda song:song['artists'][0]['name']
+    key_func = lambda song:song['artist']
     for key, group in itertools.groupby(playlist, key_func):
         group_as_list = list(group)
         print(f"ARTIST: {key} - {[s[1]['name'] for s in group_as_list]}")

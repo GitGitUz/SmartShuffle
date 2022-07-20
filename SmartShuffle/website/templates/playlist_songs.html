@@ -1,0 +1,12 @@
+{% extends "base.html" %} {% block title %}Playlist{% endblock %}
+
+{% block content%}
+    <br/>
+    {% if p == None %}
+        <h1 align="center">Invalid</h1>
+    {% else %}
+        <h1 align="center">{{playlist.name}}</h1>
+        <p align="center">Description: {{playlist.description}}</p>
+        <br/>
+    {% endif %}
+{% endblock %}

@@ -1,4 +1,3 @@
-from operator import indexOf
 import creds
 import json
 import spotipy
@@ -18,16 +17,30 @@ while True:
     choice = input("What do you want to do? ")
 
     if choice == "0":
-        song = input("Search for a song: ")
+        song = input("Song Name: ")
         print()
         searchResults = spotify.search(song,10,0,"track")
         searchResults = searchResults['tracks']
         tracks = searchResults['items']
-
+        pl = {
+            "id": "5",
+            "tracks": []
+        }
         for track in tracks:
-            print(f"[{indexOf(tracks,track)+1}] SONG: {track['name']}")
-            print(f"\tARTIST: {track['artists'][0]['name']}")
-            print(f"\tALBUM: {track['album']['name']}\n")
+
+            # WILL ONLY DO THIS FOR THE ONE ADDED TO PLAYLIST
+            temp = {
+                "name": track['name'],
+                "artist": track['artists'][0]['name'],
+                "album": track['album']['name'],
+                "id": track['id'],
+                "url": track['external_urls']['spotify']
+            }
+
+            pl["tracks"].append(temp)
+
+        print(json.dumps(pl, indent=3))
+        print(type(pl))
 
     if choice == "1":
         break
