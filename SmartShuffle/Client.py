@@ -1,11 +1,11 @@
-import creds
+from website import creds
 import json
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 
 # print(json.dumps(results, sort_keys=True, indent=4))
 
-spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(client_id=creds.client_id, client_secret=creds.client_secret))
+spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(client_id=creds.CLIENT_ID, client_secret=creds.CLIENT_SECRET))
 
 while True:
     print("------------------------")
@@ -40,7 +40,11 @@ while True:
             pl["tracks"].append(temp)
 
         print(json.dumps(pl, indent=3))
-        print(type(pl))
+        print(type(json.dumps(pl)))
+        print(json.loads(json.dumps(pl['tracks'], indent=3)))
+        # print(json.dumps((pl['tracks'][0]), indent=3))
+        # print(type(json.loads((json.dumps(pl)))))
+
 
     if choice == "1":
         break

@@ -2,11 +2,62 @@
 
 {% block content%}
     <br/>
-    {% if p == None %}
+    {% if playlist == None %}
         <h1 align="center">Invalid</h1>
     {% else %}
         <h1 align="center">{{playlist.name}}</h1>
-        <p align="center">Description: {{playlist.description}}</p>
+        <p align="center" class="mt-n1 text-muted">Songs: {{playlist.count}}</p>
+        <p align="center" class="mt-n3 text-muted">Description: {{playlist.description}}</p>
+        
+        {% if playlist.count > 0 %}
+            <div class="container">
+                <div class="row"><div class="font-weight-bold col-sm">Name</div><div class="font-weight-bold col-sm">Artist</div><div class="font-weight-bold col-sm">Album</div></div>
+                <hr/>
+                {% for song in playlist.songs['tracks'] %}
+                    <div class="row">
+                        <div class="col-sm">{{song['name']}}</div><div class="col-sm">{{song['artist']}}</div><div class="col-sm">{{song['album']}}</div>
+                        <button type="button" class="close" onClick="removeSong({{song}}, {{playlist.id}})">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <br/>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div align="center" class="text-muted font-italic container">
+                Add some songs to get your playlist started!
+            </div>
+        {% endif %}
+        <hr/>
+        <h3 align="center">Add Song</h3>
+        <div class="container">
+            <div class="row justify-content-center">
+                <form method="POST" class="form-inline">
+                    <div class="form-group">
+                        <input
+                            type="song_name"
+                            class="form-control"
+                            id="song_name"
+                            name="song_name"
+                            placeholder="Enter song name"
+                        />
+                    </div>
+                    <button type="submit" class="btn btn-success">Search</button>
+                </form>
+            </div>
+        </div>
         <br/>
+        {% if searchResults != None %}
+            <div class="container">
+                <div class="row"><div class="font-weight-bold col-sm">Name</div><div class="font-weight-bold col-sm">Artist</div><div class="font-weight-bold col-sm">Album</div></div>
+                <hr/>
+                {% for song in searchResults %}
+                    <div class="row">
+                        <div class="col-sm">{{song['name']}}</div><div class="col-sm">{{song['artist']}}</div><div class="col-sm">{{song['album']}}</div><button type="button" class="btn btn-secondary btn-sm" onClick="addSong({{song}}, {{playlist.id}})">Add</button>
+                    </div>
+                    <br/>
+                {% endfor %}
+              </div>
+        {% endif %}
     {% endif %}
 {% endblock %}

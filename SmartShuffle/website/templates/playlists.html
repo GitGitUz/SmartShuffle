@@ -9,7 +9,7 @@
     <ul class="list-group list-group-flush" id="playlists">
         {% for playlist in user.playlists %}
             <li class="list-group-item">
-                <button type="button" class="btn btn-link" onClick="viewPlaylist({{playlist.id}}, '{{playlist.name}}')">{{ playlist.name }}</button>
+                <button type="button" class="btn btn-link" onClick="viewPlaylist({{playlist.id}})">{{ playlist.name }}</button>
                 <button type="button" class="close" onClick="deletePlaylist({{playlist.id}})">
                     <span aria-hidden="true">&times;</span>
                 </button>

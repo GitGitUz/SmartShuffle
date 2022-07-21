@@ -7,10 +7,28 @@ function deletePlaylist(playlistID){
     });
 }
 
-function viewPlaylist(pid, pname){
-    fetch(`/playlist/${pid}/${pname}`, {
+function viewPlaylist(pid){
+    fetch(`/playlist/${pid}`, {
         method: 'GET',
     }).then((_res) => {
-        window.location.href = `/playlist/${pid}/${pname}`
+        window.location.href = `/playlist/${pid}`
+    });
+}
+
+function addSong(song, pid){
+    fetch(`/add-song`, {
+        method: 'POST',
+        body: JSON.stringify({song: song, pid: pid})
+    }).then((_res) => {
+        window.location.href = `/playlist/${pid}`
+    });
+}
+
+function removeSong(song, pid){
+    fetch(`/remove-song`, {
+        method: 'POST',
+        body: JSON.stringify({song: song, pid: pid})
+    }).then((_res) => {
+        window.location.href = `/playlist/${pid}`
     });
 }
