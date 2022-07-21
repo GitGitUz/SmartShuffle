@@ -8,6 +8,7 @@ function deletePlaylist(playlistID){
 }
 
 function viewPlaylist(pid){
+    console.log("inside viewPlaylist")
     fetch(`/playlist/${pid}`, {
         method: 'GET',
     }).then((_res) => {
@@ -31,4 +32,15 @@ function removeSong(song, pid){
     }).then((_res) => {
         window.location.href = `/playlist/${pid}`
     });
+}
+
+function editDesc(event, desc, pid){
+    if(event.charCode === 13){
+        fetch(`/edit-desc`, {
+            method: 'POST',
+            body: JSON.stringify({desc: desc, pid: pid})
+        }).then((_res) => {
+            window.location.href = `/playlist/${pid}`
+        });
+    }
 }

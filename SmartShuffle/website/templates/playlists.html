@@ -4,18 +4,20 @@
     <br/>
     {% if user.playlists %}
         <h1 align="center">Your Playlists</h1>
+        <div class="container">
+            <div class="row"><div class="font-weight-bold col-sm">Name</div><div class="font-weight-bold col-sm">Songs</div></div>
+            <hr/>
+            {% for playlist in user.playlists %}
+                <div class="row">
+                    <a type = "button" class="col-sm" onClick="viewPlaylist({{playlist.id}})">{{ playlist.name }}</a>
+                    <p class="col-sm">{{ playlist.count }}</p>
+                    <button type="button" class="close" onClick="deletePlaylist({{playlist.id}})">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <br/>
+            {% endfor %}
     {% endif %}
-
-    <ul class="list-group list-group-flush" id="playlists">
-        {% for playlist in user.playlists %}
-            <li class="list-group-item">
-                <a type="button" class="btn btn-link" onClick="viewPlaylist({{playlist.id}})">{{ playlist.name }}</a>
-                <button type="button" class="close" onClick="deletePlaylist({{playlist.id}})">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </li>
-        {% endfor %}
-    </ul>
     <br/>
     <form method="POST">
         <h3 align="center">Create Playlist</h3>

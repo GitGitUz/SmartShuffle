@@ -7,7 +7,8 @@
     {% else %}
         <h1 align="center">{{playlist.name}}</h1>
         <p align="center" class="mt-n1 text-muted">Songs: {{playlist.count}}</p>
-        <p align="center" class="mt-n3 text-muted">Description: {{playlist.description}}</p>
+            <label align="center" class="text-muted">Description: </label>                
+            <p class="font-italic small text-muted border" contentEditable="true" id="desc" onkeypress="editDesc(event,this.textContent, {{playlist.id}})">{{playlist.description}}</p>
         
         {% if playlist.count > 0 %}
             <div class="container">

@@ -97,17 +97,17 @@ def remove_song():
 
     return jsonify({})
 
-# @views.route('/edit-desc', methods=['POST'])
-# def change_desc():
-#     data = json.loads(request.data)
-#     desc = data['desc']
-#     pid = data['pid']
+@views.route('/edit-desc', methods=['POST'])
+def change_desc():
+    data = json.loads(request.data)
+    desc = data['desc']
+    pid = data['pid']
 
-#     playlist = Playlist.query.get(pid)
+    playlist = Playlist.query.get(pid)
 
-#     if playlist:
-#         if playlist.user_id == current_user.id:
-#             playlist.description = desc
-#             db.session.commit()
+    if playlist:
+        if playlist.user_id == current_user.id:
+            playlist.description = desc
+            db.session.commit()
 
-#     return jsonify({})
+    return jsonify({})
