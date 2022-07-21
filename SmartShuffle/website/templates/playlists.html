@@ -9,7 +9,7 @@
             <hr/>
             {% for playlist in user.playlists %}
                 <div class="row">
-                    <a type = "button" class="col-sm" onClick="viewPlaylist({{playlist.id}})">{{ playlist.name }}</a>
+                    <p type = "button" class="col-sm" onClick="viewPlaylist({{playlist.id}})">{{ playlist.name }}</p>
                     <p class="col-sm">{{ playlist.count }}</p>
                     <button type="button" class="close" onClick="deletePlaylist({{playlist.id}})">
                         <span aria-hidden="true">&times;</span>
