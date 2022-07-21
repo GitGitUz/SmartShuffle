@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash, jsonify, redirect, url_for
+from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
 from .models import Playlist
 from . import db, spotify
@@ -31,11 +31,6 @@ def songs(pid):
         playlist = Playlist.query.get(int(pid))
         if playlist:
             if playlist.user_id == current_user.id:
-                print("-------Playlist Count: ", playlist.count)
-                print("-------Playlist Songs: ", type(playlist.songs['tracks']))
-                for t in playlist.songs['tracks']:
-                    print(t['name'])
-                # print("-------Playlist Songs: ", playlist.songs)
                 return render_template("playlist_songs.html", user=current_user, playlist=playlist, searchResults=None)
         return render_template("playlist_songs.html", user=current_user, playlist=None)
     else:
@@ -53,7 +48,7 @@ def songs(pid):
                 "url": track['external_urls']['spotify']
             }
             songs.append(temp)
-            print(json.dumps(temp, indent=3))
+            # print(json.dumps(temp, indent=3))
         return render_template("playlist_songs.html", user=current_user, playlist=playlist, searchResults=songs)
 
 
@@ -75,23 +70,14 @@ def add_song():
     data = json.loads(request.data)
     song = data['song']
     pid = data['pid']
-    print(json.dumps(song, indent=2))
 
     playlist = Playlist.query.get(pid)
 
     if playlist:
         if playlist.user_id == current_user.id:
-            #add song to playlist.songs
-            # print (type(playlist.songs))
-            # print("Count: ", playlist.count)
-            # print(type(playlist.songs['tracks']))
-            # print("Songs: ", playlist.songs['tracks'])
-            # print("---------------------------------")
             playlist.songs['tracks'].append(song)
             playlist.count+=1
             db.session.commit()
-            # print("Count: ", playlist.count)
-            # print("Songs: ", playlist.songs['tracks'])
     
     return jsonify({})
 
@@ -100,7 +86,6 @@ def remove_song():
     data = json.loads(request.data)
     song = data['song']
     pid = data['pid']
-    # print(json.dumps(, indent=2))
 
     playlist = Playlist.query.get(pid)
 
@@ -109,5 +94,20 @@ def remove_song():
             playlist.songs['tracks'].remove(song)
             playlist.count-=1
             db.session.commit()
-            
+
     return jsonify({})
+
+# @views.route('/edit-desc', methods=['POST'])
+# def change_desc():
+#     data = json.loads(request.data)
+#     desc = data['desc']
+#     pid = data['pid']
+
+#     playlist = Playlist.query.get(pid)
+
+#     if playlist:
+#         if playlist.user_id == current_user.id:
+#             playlist.description = desc
+#             db.session.commit()
+
+#     return jsonify({})
