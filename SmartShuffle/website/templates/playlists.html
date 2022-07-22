@@ -3,39 +3,40 @@
 {% block content%}
     <br/>
     {% if user.playlists %}
-        <h1 align="center">Your Playlists</h1>
+        <h1 align="center" class="mb-3 text-white">Your Playlists</h1>
         <div class="container">
-            <div class="row"><div class="font-weight-bold col-sm">Name</div><div class="font-weight-bold col-sm">Songs</div></div>
-            <hr/>
-            {% for playlist in user.playlists %}
-                <div class="row">
-                    <p type = "button" class="col-sm" onClick="viewPlaylist({{playlist.id}})">{{ playlist.name }}</p>
-                    <p class="col-sm">{{ playlist.count }}</p>
-                    <button type="button" class="close" onClick="deletePlaylist({{playlist.id}})">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <br/>
-            {% endfor %}
+            <div class="row mb-n2">
+                <div class="font-weight-bold col-sm text-white-50">Name</div>
+                <div class="ml-n3 font-weight-bold col-sm text-white-50">Songs</div>
+            </div>
+            <hr style="border-top: 1px solid rgba(255, 255, 255, 0.25)"></hr>
+        {% for playlist in user.playlists %}
+            <div class="row">
+                <p type = "button" class="col-sm text-white" onClick="viewPlaylist({{playlist.id}})">{{ playlist.name }}</p>
+                <p class="col-sm text-white">{{ playlist.count }}</p>
+                <button type="button" class="close text-white-50" aria-label="Close" onClick="deletePlaylist({{playlist.id}})">&times;</button>
+            </div>
+            <br/>
+        {% endfor %}
     {% endif %}
     <br/>
     <form method="POST">
-        <h3 align="center">Create Playlist</h3>
-        <div class="form-group">
+        <h3 align="center" class="mb-3 text-white">Create Playlist</h3>
+        <div class="mx-auto w-25 form-group">
             <input
                 type="playlist_name"
-                class="form-control"
+                class="form-control text-center"
                 id="playlist_name"
                 name="playlist_name"
                 placeholder="Enter playlist name"
             />
         </div>
-        <div class="form-group">
+        <div class="mx-auto w-50 form-group">
             <textarea name="playlist_description" id="playlist_description" class="form-control" placeholder="Enter a description (Optional)"></textarea>
             <small id="descHelp" class="form-text text-muted">Up to 1000 characters</small>    
         </div>
         <div align="center">
-            <button type="submit" class="btn btn-primary">Create</button>
+            <button type="submit" class="btn btn-secondary btn-sm">Create</button>
         </div>
     </form>
 {% endblock %}

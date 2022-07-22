@@ -2,9 +2,9 @@
 
 {% block content %}
     <form method="POST">
-        <h3 align="center">Sign Up</h3>
-        <div class="form-group">
-            <label for="email">Email Address</label>
+        <h3 align="center" class="text-white">Sign Up</h3>
+        <div class="mx-auto w-50 form-group">
+            <label for="email" class="text-white-50">Email Address</label>
             <input
                 type="email"
                 class="form-control"
@@ -13,8 +13,8 @@
                 placeholder="Enter email"
             />
         </div>
-        <div class="form-group">
-            <label for="firstName">First Name</label>
+        <div class="mx-auto w-50 form-group">
+            <label for="firstName" class="text-white-50">First Name</label>
             <input
                 type="text"
                 class="form-control"
@@ -23,8 +23,8 @@
                 placeholder="Enter first name"
             />
         </div>
-        <div class="form-group">
-            <label for="password1">Password</label>
+        <div class="mx-auto w-50 form-group">
+            <label for="password1" class="text-white-50">Password</label>
             <input
                 type="password"
                 class="form-control"
@@ -33,8 +33,8 @@
                 placeholder="Enter password"
             />
         </div>
-        <div class="form-group">
-            <label for="password2">Password (Confirm)</label>
+        <div class="mx-auto w-50 form-group">
+            <label for="password2" class="text-white-50">Password (Confirm)</label>
             <input
                 type="password"
                 class="form-control"
@@ -44,6 +44,8 @@
             />
         </div>
         <br/>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div align="center" class="mt-n4">
+            <button type="submit" class="btn btn-secondary">Submit</button>
+        </div>
     </form>
 {% endblock %}
