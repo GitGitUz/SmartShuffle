@@ -1,7 +1,6 @@
 from . import db
 from flask_login import UserMixin
 from sqlalchemy_json import mutable_json_type
-from sqlalchemy.ext.mutable import MutableDict
 
 class Playlist(db.Model):
     id = db.Column(db.Integer, primary_key=True)

@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% block title %}Sign Up{% endblock %}
+{% extends "base.html" %} {% block title %}Login{% endblock %}
 
 {% block content%}
     <form method="POST">
@@ -26,8 +26,11 @@
         <br/>
         <div align="center" class="mt-n4">
             <button type="submit" class="mx-auto btn btn-secondary">Login</button>
-            <button type="submit" class="mx-auto btn btn-secondary">Forgot Password?</button>
+            <!-- <a class="nav-item nav-link" id="signUp" href="/sign-up">Sign Up</a> -->
         </div>
-        
   </form>
+  <br/>
+  <div align="center">
+      <a class="btn btn-secondary" href="/forgot-pwd">Forgot Password?</a>
+  </div>
 {% endblock %}
