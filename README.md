@@ -1,7 +1,19 @@
 # SmartShuffle
+SmartShuffle seeks to supplement the existing Spotify shuffling algorithm in order to correct for users reporting that playlists with a large amount of songs play only a subset/percentage of those songs. This project first implements Spotify's existing shuffling algorithm as closely as possible according to their description which can be found here: https://engineering.atspotify.com/2014/02/how-to-shuffle-songs/. 
 
+On top of implementing Spotify's shuffling algorithm, SmartShuffle tracks how often a song is played within a playlist in order to decide which songs are pushed closer to the top of the queue.(1) This ensures songs that aren't getting played as much have a higher chance of being played in the future. This balancing seeks to improve on the feeling of randomness when a playlist is shuffled (described in detail in the above article)
 
-[NUMBER OF PLAYS FOR A SONG]
+Project Specifications:
+  - This project is a Flask application mainly written in Python and HTML with some JavaScript functions to handle HTTP requests.
+  - This project uses SQLite in conjunction with SQLAlchemy for database/database mapping operations.
+  - This project uses Bootstrap for streamlined, responsive front-end styling
+  - This project utilizes the Spotipy Python library to simplify requests to the Spotify Web API for the song search engine
+
+Website Features:
+  - Create User account, Login, Logout, Forgot Password (reset link sent to email)
+  - Create Playlists, Search for songs, Add songs to playlist, Shuffle songs within a playlist
+
+(1)NUMBER OF PLAYS FOR A SONG
   The number of plays a song has within a playlist is recorded under the 'num_plays' field and is crucial to the implementation of the SmartShuffle algorithm.
 
   The 'num_plays' field should follow two ideal rules.
@@ -12,4 +24,3 @@
 
   Since we are not modeling songs in our database (only Users and Playlists) and mainly wish to visualize the shuffling algorithm, it is sufficient for this project's
   scope to have the field belong to a song inside a playlist. A 'play' will also be recorded as soon as a song is played, not according to the rule above.
-
