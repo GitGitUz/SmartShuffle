@@ -13,8 +13,7 @@ Website Features:
   - Create User account, Login, Logout, Forgot Password (reset link sent to email)
   - Create Playlists, Search for songs, Add songs to playlist, Shuffle songs within a playlist
 
-(1)NUMBER OF PLAYS FOR A SONG
-  The number of plays a song has within a playlist is recorded under the 'num_plays' field and is crucial to the implementation of the SmartShuffle algorithm.
+(1)The number of plays a song has within a playlist is recorded under the 'num_plays' field and is crucial to the implementation of the SmartShuffle algorithm.
 
   The 'num_plays' field should follow two ideal rules.
     - This field should belong to the relationship between the song and the playlist.
