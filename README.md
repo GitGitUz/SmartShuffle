@@ -15,9 +15,9 @@ Website Features:
 
 (1)The number of plays a song has within a playlist is recorded under the 'num_plays' field and is crucial to the implementation of the SmartShuffle algorithm.
 
-  The 'num_plays' field should follow two ideal rules.
-    - This field should belong to the relationship between the song and the playlist.
-    - A 'play' for a song is valid and recorded only if the song is played continuously for at least 30 seconds.
+The 'num_plays' field should follow two ideal rules.
+  - This field should belong to the relationship between the song and the playlist.
+  - A 'play' for a song is valid and recorded only if the song is played continuously for at least 30 seconds.
 
   These rules exceed the current scope of the project and hence will be ignored in favor of a simpler implementation.
 
