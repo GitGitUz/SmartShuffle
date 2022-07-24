@@ -2,6 +2,7 @@ from website import creds
 import json
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
+import random, string
 
 # print(json.dumps(results, sort_keys=True, indent=4))
 
@@ -14,6 +15,7 @@ while True:
     print("(SmartShuffle improves on the current Spotify Shuffle algorithm to ensure all songs in a playlist are uniformly played)\n")
     print("0 - Search for a song")
     print("1 - Exit\n")
+
     choice = input("What do you want to do? ")
 
     if choice == "0":

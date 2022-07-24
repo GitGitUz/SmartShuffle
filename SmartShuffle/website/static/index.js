@@ -8,7 +8,6 @@ function deletePlaylist(playlistID){
 }
 
 function viewPlaylist(pid){
-    console.log("inside viewPlaylist")
     fetch(`/playlist/${pid}`, {
         method: 'GET',
     }).then((_res) => {

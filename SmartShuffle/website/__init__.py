@@ -7,10 +7,13 @@ from . import creds
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 from flask_migrate import Migrate
+from flask_jwt_extended import JWTManager
 
 db = SQLAlchemy()
 migrate = Migrate()
 mail = Mail()
+jwt = JWTManager()
+
 DB_NAME = "smartshuffle.db"
 
 spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(client_id=creds.CLIENT_ID, client_secret=creds.CLIENT_SECRET))
@@ -31,6 +34,7 @@ def create_app():
     db.init_app(app)
     migrate.init_app(app, db)
     mail.init_app(app)
+    jwt.init_app(app)
 
     from .views import views
     from .auth import auth
@@ -49,14 +53,6 @@ def create_app():
     @login_manager.user_loader
     def load_user(id):
         return User.query.get(int(id))
-
-    
-    # user = User.query.filter_by(email='test@gmail.com').first()
-    # user2 = User.query.filter_by(email='thequickgunner@gmail.com').first()
-    # db.session.delete(user)
-    # db.session.delete(user2)
-    # print("--------------------")
-    # db.session.commit()
 
     return app
 

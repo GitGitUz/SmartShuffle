@@ -32,6 +32,7 @@ def songs(pid):
         if playlist:
             if playlist.user_id == current_user.id:
                 return render_template("playlist_songs.html", user=current_user, playlist=playlist, searchResults=None)
+        
         return render_template("playlist_songs.html", user=current_user, playlist=None)
     else:
         song_name = request.form.get('song_name')
@@ -48,7 +49,7 @@ def songs(pid):
                 "url": track['external_urls']['spotify']
             }
             songs.append(temp)
-            # print(json.dumps(temp, indent=3))
+        
         return render_template("playlist_songs.html", user=current_user, playlist=playlist, searchResults=songs)
 
 

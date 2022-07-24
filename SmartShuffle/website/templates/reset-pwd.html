@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block title %}Password Reset{% endblock %}
+
+{% block content%}
+    <form method="POST">
+        <h3 align="center" class="text-white">Reset Password</h3>
+        <p align="center" class="text-muted small font-italic">Enter a new password</p>
+        <div class="mx-auto w-50 form-group">
+            <label class="text-white-50" for="password">New Password</label>
+            <input
+                type="password"
+                class="form-control"
+                id="npassword1"
+                name="npassword1"
+            />
+        </div>
+        <div class="mx-auto w-50 form-group">
+            <label class="text-white-50" for="password">Confirm Password</label>
+            <input
+                type="password"
+                class="form-control"
+                id="npassword2"
+                name="npassword2"
+            />
+        </div>
+        <br/>
+        <div align="center" class="mt-n4">
+            <button type="submit" class="mx-auto btn btn-secondary">Reset</button>
+        </div>
+  </form>
+{% endblock %}
