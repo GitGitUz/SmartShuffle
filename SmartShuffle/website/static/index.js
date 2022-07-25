@@ -43,3 +43,12 @@ function editDesc(event, desc, pid){
         });
     }
 }
+
+function shuffle(pid){
+    fetch(`/shuffle/${pid}`, {
+        method: 'GET',
+    }).then((_res) => {
+        window.location.href = `/shuffle/${pid}`
+    });
+}
+   

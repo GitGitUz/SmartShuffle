@@ -1,8 +1,10 @@
 from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
 from .models import Playlist
+from .shuffle import *
 from . import db, spotify
 import json
+from operator import itemgetter
 
 views = Blueprint('views', __name__)
 
@@ -28,7 +30,6 @@ def playlists():
 def songs(pid):
     playlist = Playlist.query.get(int(pid))
     if request.method == 'GET':
-        playlist = Playlist.query.get(int(pid))
         if playlist:
             if playlist.user_id == current_user.id:
                 return render_template("playlist_songs.html", user=current_user, playlist=playlist, searchResults=None)
@@ -52,6 +53,15 @@ def songs(pid):
         
         return render_template("playlist_songs.html", user=current_user, playlist=playlist, searchResults=songs)
 
+@views.route('/shuffle/<pid>', methods=['GET'])
+@login_required
+def shuffle(pid):
+    playlist = Playlist.query.get(int(pid))
+
+    if playlist:
+        shuffled_songs = spotifyShuffle(playlist.songs['tracks'])
+        return render_template("shuffled.html", user=current_user, shuffled_songs=shuffled_songs)
+    return jsonify({})
 
 @views.route('/delete-playlist', methods=['POST'])
 def delete_playlist():
