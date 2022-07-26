@@ -5,18 +5,17 @@
     {% if user.playlists %}
         <h1 align="center" class="mb-3 text-white">Your Playlists</h1>
         <div class="container">
-            <div class="row mb-n2">
-                <div class="font-weight-bold col text-white-50">Name</div>
-                <div class="ml-n3 font-weight-bold col text-white-50">Songs</div>
+            <div class="mr-3 row mb-n2 justify-content-center">
+                <div class="font-weight-bold col-2 text-white-50">Name</div>
+                <div class="font-weight-bold col-2 text-white-50">Songs</div>
             </div>
-            <hr style="border-top: 1px solid rgba(255, 255, 255, 0.25)"></hr>
+            <hr class="w-50" style="border-top: 1px solid rgba(255, 255, 255, 0.25)"></hr>
         {% for playlist in user.playlists %}
-            <div class="row">
-                <p type = "button" class="col text-white" onclick="viewPlaylist({{playlist.id}})">{{ playlist.name }}</p>
-                <p class="col text-white">{{ playlist.count }}</p>
-                <button type="button" class="close text-white-50" aria-label="Close" onclick="deletePlaylist({{playlist.id}})">&times;</button>
+            <div class="row justify-content-center">
+                <p type = "button" class="mt-1 col-2 text-white" onclick="viewPlaylist({{playlist.id}})">{{ playlist.name }}</p>
+                <p class="mt-1 col-2 text-white">{{ playlist.count }}</p>
+                <button type="button" class="pb-3 close text-white-50" aria-label="Close" onclick="deletePlaylist({{playlist.id}})">&times;</button>
             </div>
-            <br/>
         {% endfor %}
     {% endif %}
     <br/>

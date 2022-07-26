@@ -13,22 +13,26 @@
         
         {% if playlist.count > 0 %}
             <div class="container">
-                <a href="http://localhost:5000/shuffle/{{playlist.id}}" target="_blank">
-                    <button type="button" class="btn btn-outline-info bi bi-shuffle" onclick="shuffle({{playlist.id}})"></button>
-                </a>
-                <div class="row mb-n3">
-                    <div class="font-weight-bold col text-white-50">Name</div>
-                    <div class="font-weight-bold col text-white-50">Artist</div>
-                    <div class="font-weight-bold col text-white-50">Album</div>
-                    <i class="bi bi-box-arrow-up-right col text-white-50 pr-4"></i>
+                <center>
+                    <a href="http://localhost:5000/shuffle/{{playlist.id}}" target="_blank">
+                        <button type="button" class="m-2 btn btn-outline-info bi bi-shuffle" onclick="shuffle({{playlist.id}})"></button>
+                    </a>
+                </center>
+                <div class="row mb-n3 justify-content-center">
+                    <div class="font-weight-bold col-3 text-white-50">Name</div>
+                    <div align="center" class="font-weight-bold col-2 text-white-50">Artist</div>
+                    <div align="center" class="font-weight-bold col-3 text-white-50">Album</div>
+                    <div align="center" class="font-weight-bold col-1 text-white-50">Plays</div>
+                    <i align="center" class="bi bi-box-arrow-up-right col-1 text-white-50 pr-3 mr-2"></i>
                 </div>
                 <hr style="border-top: 1px solid rgba(255, 255, 255, 0.35)"></hr>
             {% for song in playlist.songs['tracks'] %}
-                <div class="row">
-                    <div class="col text-white">{{song['name']}}</div>
-                    <div class="col text-white">{{song['artist']}}</div>
-                    <div class="col text-white">{{song['album']}}</div>
-                    <a type="button" class="bi bi-spotify col text-success mr-n1" href="{{song['url']}}" target="_blank" rel="noreferrer noopener"></a>
+                <div class="row justify-content-center">
+                    <div class="col-3 text-white">{{song['name']}}</div>
+                    <div align="center" class="col-2 text-white">{{song['artist']}}</div>
+                    <div align="center" class="col-3 text-white">{{song['album']}}</div>
+                    <div align="center" class="col-1 text-white">{{song['plays']}}</div>
+                    <a align="center" type="button" class="bi bi-spotify col-1 text-success mr-n1" href="{{song['url']}}" target="_blank" rel="noreferrer noopener"></a>
                     <button type="button" class="close text-white-50" aria-label="Close" onclick="removeSong({{song}}, {{playlist.id}})">&times;</button>
                 </div>
                 <br/>
@@ -38,8 +42,9 @@
             <div align="center" class="text-muted font-italic container">
                 Add some songs to get your playlist started!
             </div>
+            <br/>
         {% endif %}
-        <hr style="border-top: 1px solid rgba(40, 167, 69, 0.35)"></hr>
+        <hr class="mt-n1" style="border-top: 1px solid rgba(255, 255, 255, 0.35)"></hr>
         <div class="container">
             <div class="row justify-content-center">
                 <form method="POST" class="form-inline">
@@ -59,26 +64,26 @@
         <br/>
         {% if searchResults[0] %}
             <div class="container">
-                <div class="row mb-n3">
-                    <div class="font-weight-bold col text-white-50">Name</div>
-                    <div class="font-weight-bold col text-white-50">Artist</div>
-                    <div class="font-weight-bold col text-white-50">Album</div>
-                    <i class="bi bi-box-arrow-up-right col text-white-50 mr-4"></i>
+                <div class="row mb-n3 mr-3 justify-content-center">
+                    <div class="font-weight-bold col-3 text-white-50">Name</div>
+                    <div align="center" class="font-weight-bold col-2 text-white-50 pl-2">Artist</div>
+                    <div align="center" class="font-weight-bold col-3 text-white-50 pl-4">Album</div>
+                    <i align="center" class="bi bi-box-arrow-up-right col-1 text-white-50 pl-4 ml-2"></i>
                 </div>
-                <hr/>
+                <hr style="border-top: 1px solid rgba(255, 255, 255, 0.35)"></hr>
             {% for song in searchResults %}
-                <div class="row">
-                    <div class="col text-white">{{song['name']}}</div>
-                    <div class="col text-white">{{song['artist']}}</div>
-                    <div class="col text-white">{{song['album']}}</div>
-                    <a type="button" class="bi bi-spotify col text-success ml-5" href="{{song['url']}}" target="_blank" rel="noreferrer noopener"></a>
+                <div class="row justify-content-center">
+                    <div class="col-3 text-white">{{song['name']}}</div>
+                    <div align="center" class="col-2 text-white">{{song['artist']}}</div>
+                    <div align="center" class="col-3 text-white">{{song['album']}}</div>
+                    <a align="center" type="button" class="bi bi-spotify col-1 text-success mr-n1" href="{{song['url']}}" target="_blank" rel="noreferrer noopener"></a>
                     <button type="button" class="btn btn-outline-success btn-sm" onclick="addSong({{song}}, {{playlist.id}})">Add</button>
                 </div>
                 <br/>
             {% endfor %}
             </div>
         {% else %}
-            <div align="center" style="color:rgba(100, 192, 121, 0.35)">No songs found</div>
+            <div align="center" class="mt-n2 mb-3" style="color:rgba(23, 162, 184, 0.50)">No songs found</div>
         {% endif %}
     {% endif %}
 {% endblock %}

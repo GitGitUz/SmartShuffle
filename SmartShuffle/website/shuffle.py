@@ -42,14 +42,21 @@ def spotifyShuffle(playlist):
     items = []
     v = []
     for artist_songs in range(len(playlist)):
+        # print("Group: ", artist_songs)
+        # print("-----------------------")
+        # print(json.dumps(playlist[artist_songs], indent=3))
         items += fyShuffle(playlist[artist_songs])
         n = len(playlist[artist_songs])
         initialOffset = random.uniform(0,1/n)
         randomOffset = [random.uniform(-0.1/n, 0.1/n) for k in range(n)]
+        playsOffset=0
         v += [k/n + initialOffset + randomOffset[k] for k in range(n)]
     
     #sort items by positional vector
     shuffled = [s[1] for s in sorted(zip(v,items))]
+
+    # shuffled[0]['plays']+=1
+
     # temp = sorted(zip(v,items))
     # print()
     # print("TEMP: ", json.dumps(temp, indent=4))

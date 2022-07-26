@@ -47,7 +47,8 @@ def songs(pid):
                 "artist": track['artists'][0]['name'],
                 "album": track['album']['name'],
                 "id": track['id'],
-                "url": track['external_urls']['spotify']
+                "url": track['external_urls']['spotify'],
+                "plays": 0
             }
             songs.append(temp)
         
@@ -59,7 +60,13 @@ def shuffle(pid):
     playlist = Playlist.query.get(int(pid))
 
     if playlist:
+        print(json.dumps(playlist.songs['tracks'], indent=3))
         shuffled_songs = spotifyShuffle(playlist.songs['tracks'])
+        # print(json.dumps(shuffled_songs[0], indent=3))
+        # increase first song on shuffled queue's plays by 1 in playlist.songs
+        played = next(song for song in playlist.songs['tracks'] if song["id"] == shuffled_songs[0]["id"])
+        played['plays']+=1
+        db.session.commit()
         return render_template("shuffled.html", user=current_user, shuffled_songs=shuffled_songs)
     return jsonify({})
 

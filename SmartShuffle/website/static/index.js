@@ -48,7 +48,7 @@ function shuffle(pid){
     fetch(`/shuffle/${pid}`, {
         method: 'GET',
     }).then((_res) => {
-        window.location.href = `/shuffle/${pid}`
+        window.location.href = `/playlist/${pid}`
     });
 }
    

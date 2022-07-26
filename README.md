@@ -21,5 +21,4 @@ The 'num_plays' field should follow two ideal rules.
 
   These rules exceed the current scope of the project and hence will be ignored in favor of a simpler implementation.
 
-  Since we are not modeling songs in our database (only Users and Playlists) and mainly wish to visualize the shuffling algorithm, it is sufficient for this project's
-  scope to have the field belong to a song inside a playlist. A 'play' will also be recorded as soon as a song is played, not according to the rule above.
+  Since we are not modeling songs in our database (only Users and Playlists) and mainly wish to visualize the shuffling algorithm, it is sufficient for this project's scope to have the field belong to a song inside a playlist. A 'play' will also be recorded as soon as a song is played, not according to the rule above.
