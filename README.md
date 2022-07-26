@@ -5,7 +5,7 @@ Core Algorithm:
   - On top of implementing Spotify's shuffling algorithm, SmartShuffle tracks how often a song is played within a playlist in order to decide which songs are pushed 
   closer to the top of the queue.(1) This ensures songs that aren't getting played as much have a higher chance of being played in the future. This balancing seeks to 
   improve on the feeling of randomness when a playlist is shuffled (described in detail in the above article). SmartShuffle therefore maintains a somewhat uniform 
-  distribution of the queued songs when viewed according to the number of times they've been played in the playlist.
+  distribution of the queued songs when viewed based on the the number of times they've been played in the playlist.
 
 Project Specifications:
   - This project is a Flask application mainly written in Python and HTML with some JavaScript to handle HTTP requests.
