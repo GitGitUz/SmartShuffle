@@ -1,7 +1,11 @@
 # SmartShuffle
 SmartShuffle seeks to supplement the existing Spotify shuffling algorithm in order to correct for users reporting that playlists with a large amount of songs play only a subset/percentage of those songs. This project first implements Spotify's existing shuffling algorithm as closely as possible according to their description which can be found here: https://engineering.atspotify.com/2014/02/how-to-shuffle-songs/. 
 
-On top of implementing Spotify's shuffling algorithm, SmartShuffle tracks how often a song is played within a playlist in order to decide which songs are pushed closer to the top of the queue.(1) This ensures songs that aren't getting played as much have a higher chance of being played in the future. This balancing seeks to improve on the feeling of randomness when a playlist is shuffled (described in detail in the above article).
+Core Algorithm:
+  - On top of implementing Spotify's shuffling algorithm, SmartShuffle tracks how often a song is played within a playlist in order to decide which songs are pushed 
+  closer to the top of the queue.(1) This ensures songs that aren't getting played as much have a higher chance of being played in the future. This balancing seeks to 
+  improve on the feeling of randomness when a playlist is shuffled (described in detail in the above article). SmartShuffle should therefore maintain a somewhat uniform 
+  distribution of the queued songs when viewed according to the number of times they've been played in the playlist.
 
 Project Specifications:
   - This project is a Flask application mainly written in Python and HTML with some JavaScript to handle HTTP requests.
@@ -21,4 +25,5 @@ The 'num_plays' field should follow two ideal rules.
 
   These rules exceed the current scope of the project and hence will be ignored in favor of a simpler implementation.
 
-  Since we are not modeling songs in our database (only Users and Playlists) and mainly wish to visualize the shuffling algorithm, it is sufficient for this project's scope to have the field belong to a song inside a playlist. A 'play' will also be recorded as soon as a song is played, not according to the rule above.
+  Since we are not modeling songs in our database (only Users and Playlists) and mainly wish to visualize the shuffling algorithm, it is sufficient for this project's
+  scope to have the field belong to a song inside a playlist. A 'play' will also be recorded as soon as a song is played, not according to the rule above.
