@@ -5,8 +5,7 @@
     {% if playlist == None %}
         <h1 align="center">Invalid</h1>
     {% else %}
-     
-
+    
         <h1 align="center" class="text-white">{{playlist.name}}</h1>
         <p align="center" class="mt-n1 text-muted">Songs: {{playlist.count}}</p>
         <p class="mt-n2 p-2 mx-auto w-75 font-italic small text-muted text-center text-white-50 border-bottom border-top border-secondary rounded" contentEditable="true" onkeypress="editDesc(event,this.textContent, {{playlist.id}})">{{playlist.description}}</p>

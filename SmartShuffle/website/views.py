@@ -62,8 +62,6 @@ def shuffle(pid):
     if playlist:
         print(json.dumps(playlist.songs['tracks'], indent=3))
         shuffled_songs = spotifyShuffle(playlist.songs['tracks'])
-        # print(json.dumps(shuffled_songs[0], indent=3))
-        # increase first song on shuffled queue's plays by 1 in playlist.songs
         played = next(song for song in playlist.songs['tracks'] if song["id"] == shuffled_songs[0]["id"])
         played['plays']+=1
         db.session.commit()
