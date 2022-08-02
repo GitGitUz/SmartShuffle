@@ -2,7 +2,6 @@ from website import creds
 import json
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
-import random, string
 
 # print(json.dumps(results, sort_keys=True, indent=4))
 

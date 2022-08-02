@@ -45,5 +45,3 @@ def spotifyShuffle(playlist):
     #sort items by positional vector
     shuffled = [s[1] for s in sorted(zip(v,items))]
     return shuffled    
-
-# playlist4 = [{"artist": "Travis Scott", "name": "90210"},{"artist": "Linkin Park", "name": "In The End"},{"artist": "The Weeknd", "name": "Gasoline"},{"artist": "Linkin Park", "name": "Crawling"},{"artist": "The Weeknd", "name": "Starboy"},{"artist": "Linkin Park", "name":  "Numb"},{"artist": "The Weeknd", "name": "The Hills"}]

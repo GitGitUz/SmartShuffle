@@ -4,7 +4,6 @@ from .models import Playlist
 from .shuffle import *
 from . import db, spotify
 import json
-from operator import itemgetter
 
 views = Blueprint('views', __name__)
 

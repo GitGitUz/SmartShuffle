@@ -21,7 +21,7 @@
                     <div class="font-weight-bold col-3 text-white-50">Name</div>
                     <div align="center" class="font-weight-bold col-2 text-white-50">Artist</div>
                     <div align="center" class="font-weight-bold col-3 text-white-50">Album</div>
-                    <div align="center" class="font-weight-bold col-1 text-white-50">Plays</div>
+                    <!-- <div align="center" class="font-weight-bold col-1 text-white-50">Plays</div> -->
                     <i align="center" class="bi bi-box-arrow-up-right col-1 text-white-50 pr-3 mr-2"></i>
                 </div>
                 <hr style="border-top: 1px solid rgba(255, 255, 255, 0.35)"></hr>
@@ -30,7 +30,7 @@
                     <div class="col-3 text-white">{{song['name']}}</div>
                     <div align="center" class="col-2 text-white">{{song['artist']}}</div>
                     <div align="center" class="col-3 text-white">{{song['album']}}</div>
-                    <div align="center" class="col-1 text-white">{{song['plays']}}</div>
+                    <!-- <div align="center" class="col-1 text-white">{{song['plays']}}</div> -->
                     <a align="center" type="button" class="bi bi-spotify col-1 text-success mr-n1" href="{{song['url']}}" target="_blank" rel="noreferrer noopener"></a>
                     <button type="button" class="close text-white-50" aria-label="Close" onclick="removeSong({{song}}, {{playlist.id}})">&times;</button>
                 </div>
