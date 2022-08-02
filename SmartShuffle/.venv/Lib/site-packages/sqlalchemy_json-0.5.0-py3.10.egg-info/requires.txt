@@ -1,2 +1,0 @@
-six
-sqlalchemy>=0.7
