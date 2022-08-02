@@ -75,7 +75,7 @@ def forgot_pwd():
             reset_token = create_access_token(identity=str(user.id), expires_delta=expires)
             
             msg = Message("SmartShuffle Password Recovery", recipients=[email])
-            msg.body =f'Hello, {user.first_name}, follow this link to reset your password (expires after 24 hours) http://localhost:5000/reset-pwd/{reset_token}'
+            msg.body =f'Hello, {user.first_name}, follow this link to reset your password (expires after 24 hours) https://smart--shuffle.herokuapp.com/reset-pwd/{reset_token}'
             mail.send(msg)
             
             flash('A password reset link was sent to your email.', category='success')
