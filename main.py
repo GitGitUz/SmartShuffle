@@ -2,7 +2,6 @@ from website import create_app
 import os
 
 app = create_app()
-# port = int(os.getenv('PORT'))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host=os.getenv("HOST"), port=os.getenv("PORT"), debug=True)
