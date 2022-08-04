@@ -5,6 +5,7 @@ from flask_jwt_extended import create_access_token, decode_token
 from datetime import timedelta
 from .models import User
 from . import db, mail
+import os
 
 auth = Blueprint('auth', __name__)
 
@@ -72,8 +73,7 @@ def forgot_pwd():
 
         if user:
             expires = timedelta(hours=24)
-            reset_token = create_access_token(identity=str(user.id), expires_delta=expires)
-            
+            reset_token = create_access_token(identity=str(user.id), expires_delta=expires)            
             msg = Message("SmartShuffle Password Recovery", recipients=[email])
             msg.body =f'Hello, {user.first_name}, follow this link to reset your password (expires after 24 hours) https://smart--shuffle.herokuapp.com/reset-pwd/{reset_token}'
             mail.send(msg)
