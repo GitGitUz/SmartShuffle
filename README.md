@@ -1,7 +1,7 @@
 # SmartShuffle
 SmartShuffle seeks to supplement the existing Spotify shuffling algorithm in order to correct for users reporting that playlists with a large amount of songs play only a subset/percentage of those songs. This project first implements Spotify's existing shuffling algorithm as closely as possible according to their description which can be found here: https://engineering.atspotify.com/2014/02/how-to-shuffle-songs/. 
 
-This project has been deployed to Heroku: https://smart--shuffle.herokuapp.com/login
+This project has been deployed on PythonAnywhere: https://pauzair.pythonanywhere.com/login
 
 Core Algorithm:
   - On top of implementing Spotify's shuffling algorithm, SmartShuffle tracks how often a song is played within a playlist in order to decide which songs are pushed 
